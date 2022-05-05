@@ -9,4 +9,13 @@ domain and may only be used under terms of a commercial license.
     <moqui.screen.SubscreensItem screenLocation="component://webroot/screen/webroot/apps.xml"
                     subscreenName="ofbm" userId="_NA_" subscreenLocation="component://OFBizMigrate/screen/ofbm.xml"
                     menuTitle="OFBiz Migrate" menuIndex="9" menuInclude="Y"/>
+
+    <moqui.security.ArtifactGroup artifactGroupId="OFBIZ_MIGRATE_APP"
+                                  description="OFBiz Migrate App (via root screen)"/>
+    <moqui.security.ArtifactGroupMember artifactGroupId="OFBIZ_MIGRATE_APP"
+                                        artifactName="component://OFBizMigrate/screen/ofbm.xml"
+                                        artifactTypeEnumId="AT_XML_SCREEN" inheritAuthz="Y"/>
+    <moqui.security.ArtifactAuthz artifactAuthzId="OFBIZ_MIGRATE_ALL"
+                                  userGroupId="ADMIN" artifactGroupId="OFBIZ_MIGRATE_APP"
+                                  authzTypeEnumId="AUTHZT_ALWAYS" authzActionEnumId="AUTHZA_ALL"/>
 </entity-facade-xml>
