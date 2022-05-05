@@ -9,13 +9,13 @@ domain and may only be used under terms of a commercial license.
         default-menu-title="Entity Migrate">
     <transition name="migrateFile">
         <actions><script><![CDATA[
-            import org.moqui.impl.FtlNodeWrapper
+            import org.moqui.util.MNode
             import org.moqui.context.ExecutionContext
             import freemarker.core.Environment
 
             ExecutionContext ec = context.ec
 
-            FtlNodeWrapper ftlNode = FtlNodeWrapper.makeFromText(ec.resource.getLocationText(ofbizEntityFilename, false))
+            MNode ftlNode = MNode.parse(ec.resource.getLocationReference(ofbizEntityFilename))
             Map root = ["entityXmlRoot": ftlNode]
 
             String templateLocation = "component://OFBizMigrate/template/EntityMigrate.ftl"
